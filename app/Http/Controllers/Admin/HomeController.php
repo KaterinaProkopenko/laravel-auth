@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {

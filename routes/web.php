@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Guest\HomeController@index')->name('home');
 
-Route::middleware('auth')
-->namespace('Admin')
-->name('admin.')
-->prefix('admin')
+Route::middleware('auth') /* se registrato */
+->namespace('Admin') /* cartella di controller */
+->prefix('home') /* URI */
+->name('admin.') /* nome */
 ->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
 });
