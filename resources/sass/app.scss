@@ -7,3 +7,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+div.my-card{
+    width: 540px;
+    height: 310px;
+}
+
+div.my-card-secondary{
+    img{
+        width: 400px;
+    }
+}
+
