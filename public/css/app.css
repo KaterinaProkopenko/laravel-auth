@@ -12183,6 +12183,11 @@ div.my-card {
   height: 310px;
 }
 
+div.my-card img {
+  height: 110px;
+  width: 100%;
+}
+
 div.my-card-secondary img {
   width: 400px;
 }
