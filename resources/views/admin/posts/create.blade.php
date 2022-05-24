@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @error('message')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @enderror
     <form action="{{route('admin.posts.store')}}" method="post">
         @csrf
 

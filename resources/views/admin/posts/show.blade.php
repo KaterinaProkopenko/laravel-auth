@@ -14,8 +14,12 @@
                     <p class="card-text fs-5">{{$post->text}}</p>
                     <p class="card-text fs-5"><small class="text-muted">Author: {{$post->author}}</small></p>
                     <p class="card-text fs-5"><small class="text-muted">Vote: {{$post->vote}}</small></p>
+  {{--                   <h5>Categories:</h5>
+                    <p style="background-color: {{$category->color}}">{{$category->category}}</p> --}}
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+{{-- @dump($category->category) --}}

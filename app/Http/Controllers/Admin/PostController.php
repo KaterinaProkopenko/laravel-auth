@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -15,8 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        $categories = Category::all();
+
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -56,32 +60,43 @@ class PostController extends Controller
      * @param Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, Category $category)
     {
-        return view('admin.posts.show', compact('post'));
+        return view('admin.posts.show', compact('post', 'category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $post->image = $data['image'];
+        $post->title = $data['title'];
+        $post->description = $data['description'];
+        $post->text = $data['text'];
+        $post->author = $data['author'];
+        $post->save();
+
+        return redirect()->route('admin.posts.show', $post)
+        ->with('message', $data['title']. " è stato modificato con successo.");
     }
 
     /**
